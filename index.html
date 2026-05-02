@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blucherville Press</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --dim: #888888;
+      --faint: #2a2a2a;
+      --border: #222222;
+    }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 52px 40px 44px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    header img {
+      width: 140px;
+      display: block;
+    }
+
+    /* CARDS */
+    .divisions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 460px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 32px 56px;
+      border-right: 0.5px solid var(--border);
+      text-decoration: none;
+      color: var(--white);
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:last-child { border-right: none; }
+    .card:hover { background: #111111; }
+
+    .card-image {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 28px;
+    }
+
+    .card-placeholder {
+      width: 180px;
+      height: 180px;
+      border: 1.5px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .card-placeholder span {
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .card-rule {
+      width: 40px;
+      height: 0.5px;
+      background: #444;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--dim);
+      font-style: italic;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .card-link {
+      font-size: 9px;
+      color: var(--faint);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid #181818;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 9px;
+      color: #2a2a2a;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .divisions { grid-template-columns: 1fr; }
+      .card { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .card:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/bvpress-logo.png" alt="Blucherville Press" />
+  </header>
+
+  <main class="divisions">
+
+    <div class="card" onclick="window.location.href='design/index.html'">
+      <img class="card-image" src="images/bvpdesign-temp.png" alt="BVP Design" />
+      <div class="card-rule"></div>
+      <div class="card-title">BVP Design</div>
+      <div class="card-tag">Brand &amp; graphic design</div>
+      <div class="card-link">bluchervillepress.com/design →</div>
+    </div>
+
+    <a class="card" href="https://thelosttraveler.co" target="_blank" rel="noopener">
+      <img class="card-image" src="images/tlt-card.png" alt="The Lost Traveler" />
+      <div class="card-rule"></div>
+      <div class="card-title">The Lost Traveler</div>
+      <div class="card-tag">Adventure is out there</div>
+      <div class="card-link">thelosttraveler.co ↗</div>
+    </a>
+
+    <div class="card" onclick="window.location.href='majestic/index.html'">
+      <img class="card-image" src="images/majestic-card.png" alt="Majestic" />
+      <div class="card-rule"></div>
+      <div class="card-title">Majestic</div>
+      <div class="card-tag">Sci-fi graphic novel series</div>
+      <div class="card-link">bluchervillepress.com/majestic →</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Storytelling Through Art</p>
+  </footer>
+
+</body>
+</html>
