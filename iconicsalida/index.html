@@ -5,125 +5,366 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iconic Salida — Blucherville Press</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --dim: #888;
+      --faint: #555;
+      --border: #222;
+      --frame-shadow: 0 4px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);
+    }
     html, body {
-      background: #0a0a0a;
-      color: #fff;
+      background: var(--black);
+      color: var(--white);
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
+
+    /* NAV */
     nav {
       padding: 28px 40px;
-      border-bottom: 0.5px solid #222;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+      z-index: 10;
     }
     nav a {
       font-size: 10px;
-      color: #555;
+      color: var(--faint);
       letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
       font-family: 'Montserrat', sans-serif;
     }
-    nav a:hover { color: #fff; }
+    nav a:hover { color: var(--white); }
+
+    /* FRAME */
+    .frame {
+      border: 1px solid #2a2a2a;
+      outline: 3px solid #111;
+      outline-offset: -1px;
+      box-shadow: var(--frame-shadow);
+      background: #111;
+      overflow: hidden;
+    }
+
+    /* HERO */
     .hero {
+      width: 100%;
+      position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .hero-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.5) 50%, transparent 100%);
+      padding: 60px 60px 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 80px 40px 60px;
-      border-bottom: 0.5px solid #222;
-      text-align: center;
     }
     .hero-logo {
-      max-width: 320px;
-      max-height: 200px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      margin-bottom: 48px;
+      width: 200px;
+      margin-bottom: 20px;
+      mix-blend-mode: lighten;
     }
-    .rule { width: 40px; height: 0.5px; background: #333; margin: 0 auto 32px; }
+    .hero-rule { width: 40px; height: 0.5px; background: #444; margin-bottom: 18px; }
     .hero-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #fff;
-      margin-bottom: 14px;
+      color: var(--white);
+      margin-bottom: 8px;
     }
     .hero-tag {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 300;
-      color: #888;
       font-style: italic;
+      color: var(--dim);
     }
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 64px 40px;
+
+    /* STORY */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 0.5px solid var(--border);
     }
-    .content p {
+    .story-photo {
+      padding: 60px 40px 60px 60px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      border-right: 0.5px solid var(--border);
+    }
+    .story-photo img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+    }
+    .story-text {
+      padding: 60px 60px 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .story-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 20px;
+    }
+    .story-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-size: 32px;
       font-weight: 300;
-      color: #999;
-      font-style: italic;
-      line-height: 1.7;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .story-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #aaa;
+    }
+    .story-body p + p { margin-top: 16px; }
+    .story-location {
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 0.5px solid var(--border);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      line-height: 2;
+    }
+
+    /* VIDEO */
+    .video-section {
+      padding: 80px 60px;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 16px;
       text-align: center;
     }
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: #111;
-      border-top: 0.5px solid #222;
-      border-bottom: 0.5px solid #222;
-    }
-    .photo-slot {
-      aspect-ratio: 4 / 3;
-      background: #111;
+    .section-rule { width: 40px; height: 0.5px; background: #333; margin: 0 auto 40px; }
+    .video-wrap {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .photo-slot img {
+    .video-placeholder {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .video-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.2;
+    }
+    .video-placeholder span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    /* ICONS */
+    .icons-section {
+      padding: 80px 60px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .icons-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .icons-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .icons-header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dim);
+    }
+    .icons-photo {
+      max-width: 560px;
+      margin: 0 auto 64px;
+    }
+    .icons-photo img {
+      width: 100%;
+      height: auto;
       display: block;
     }
-    .photo-slot.empty {
-      border: 0.5px dashed #2a2a2a;
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+      border-top: 0.5px solid var(--border);
+      border-left: 0.5px solid var(--border);
     }
-    .photo-slot.empty span {
+    .icon-item {
+      padding: 28px 32px;
+      border-right: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .icon-number {
       font-size: 9px;
-      color: #333;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #444;
+      margin-bottom: 6px;
       font-family: 'Montserrat', sans-serif;
     }
+    .icon-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .icon-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 300;
+      font-style: italic;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* SHOP */
+    .shop-section {
+      padding: 80px 60px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .product-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .product-placeholder span {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #333;
+    }
+    .product-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .product-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dim);
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .product-btn {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #444;
+      border: 0.5px solid #333;
+      padding: 10px 24px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .product-btn:hover { border-color: #888; color: #888; }
+
+    /* FOOTER */
     .credits {
-      padding: 48px 40px;
+      padding: 48px 60px;
       text-align: center;
       border-bottom: 0.5px solid #1a1a1a;
     }
     .credits p {
       font-size: 10px;
-      color: #444;
+      color: #3a3a3a;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-family: 'Montserrat', sans-serif;
-      line-height: 2;
-      font-style: normal;
+      line-height: 2.4;
     }
     footer {
-      margin-top: auto;
       border-top: 0.5px solid #181818;
       padding: 18px 40px;
       text-align: center;
@@ -135,38 +376,388 @@
       text-transform: uppercase;
       font-family: 'Montserrat', sans-serif;
     }
-    @media (max-width: 600px) {
-      .hero { padding: 60px 24px 48px; }
-      .content { padding: 48px 24px; }
-      .photo-grid { grid-template-columns: 1fr; }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      nav { padding: 24px; }
+      .hero-img { height: 320px; }
+      .hero-overlay { padding: 40px 24px 36px; }
+      .story { grid-template-columns: 1fr; }
+      .story-photo { padding: 48px 24px 0; border-right: none; border-bottom: 0.5px solid var(--border); }
+      .story-text { padding: 40px 24px 48px; }
+      .video-section { padding: 60px 24px; }
+      .icons-section { padding: 60px 24px; }
+      .icons-grid { grid-template-columns: 1fr; }
+      .shop-section { padding: 60px 24px; }
+      .shop-grid { grid-template-columns: 1fr; gap: 56px; }
+      .credits { padding: 40px 24px; }
     }
   </style>
 </head>
 <body>
+
   <nav><a href="../index.html">← Blucherville Press</a></nav>
 
+  <!-- HERO -->
   <div class="hero">
-    <img class="hero-logo" src="../images/IconicSalidaSign.png" alt="Iconic Salida" />
-    <div class="rule"></div>
-    <div class="hero-title">Iconic Salida</div>
-    <div class="hero-tag">A mural by Seth Brandon</div>
+    <img class="hero-img" src="../images/IconicSalidaMural_WIDE.jpeg" alt="Iconic Salida Mural — wide view" />
+    <div class="hero-overlay">
+      <img class="hero-logo" src="../images/IconicSalidaSign.png" alt="Iconic Salida" />
+      <div class="hero-rule"></div>
+      <div class="hero-title">Iconic Salida</div>
+      <div class="hero-tag">A mural by Seth Brandon</div>
+    </div>
   </div>
 
-  <div class="content">
-    <p>Coming soon — photos and the story behind the mural.</p>
+  <!-- STORY -->
+  <div class="story">
+    <div class="story-photo">
+      <img class="frame" src="../images/IconicSalidaMural.png" alt="Iconic Salida Mural" />
+    </div>
+    <div class="story-text">
+      <div class="story-label">The Story</div>
+      <h1 class="story-heading">Iconic Salida<br>Mural</h1>
+      <div class="story-body">
+        <p>"Iconic Salida" was designed by artist Seth Brandon. The owner of the building, Dorothy Norbie, approached Ken Brandon of the Box of Bubbles about commissioning a mural for the side of her building. He introduced her to Seth and they started brainstorming. The group decided that a whimsical mural featuring a variety of local icons would be the perfect subject.</p>
+        <p>Salida is notorious for its weird, wild and wonderful art and artists. It's one of the things that makes living in Salida so magical. As president of the Salida Council for the Arts, Ken Brandon is well known in the area for his contributions to the local art scene, and now his son Seth is continuing the tradition.</p>
+        <p>Seth grew up in Salida and attributes his dad with his lifelong passion for art and creativity. He spent the last 20+ years working in the film and television industry as an Illustrator, Art Director, and Prop Master. He and his wife Éowyn Mishawn moved back to Salida about 3 years ago, and are finding their place in the community.</p>
+        <p>Seth, Ken and Éowyn spent every morning in August up on the scaffolding, painting this mural and are so excited to share it with all of you.</p>
+      </div>
+      <div class="story-location">
+        Mural by Seth Brandon<br>
+        136 E 2nd St, Salida, CO 81201<br>
+        West side of the Tacos El Tapatio building
+      </div>
+    </div>
   </div>
 
-  <div class="photo-grid">
-    <div class="photo-slot empty"><span>Photo</span></div>
-    <div class="photo-slot empty"><span>Photo</span></div>
-    <div class="photo-slot empty"><span>Photo</span></div>
-    <div class="photo-slot empty"><span>Photo</span></div>
+  <!-- TIMELAPSE VIDEO -->
+  <div class="video-section">
+    <div class="section-label">Behind the Mural</div>
+    <div class="section-rule"></div>
+    <div class="video-wrap frame">
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Timelapse — Coming Soon</span>
+      </div>
+    </div>
   </div>
 
+  <!-- ICONS LIST -->
+  <div class="icons-section">
+    <div class="icons-header">
+      <div class="section-label">Hidden in Plain Sight</div>
+      <div class="section-rule"></div>
+      <h2>How many can you spot?</h2>
+      <p>Over 42 Salida icons hidden in the mural</p>
+    </div>
+
+    <div class="icons-photo">
+      <img class="frame" src="../images/IconicSalidaMural.png" alt="Iconic Salida Mural detail" />
+    </div>
+
+    <div class="icons-grid">
+
+      <div class="icon-item">
+        <div class="icon-number">01</div>
+        <div class="icon-name">Frida Puppet</div>
+        <div class="icon-desc">Each year for the Salida Artwalk parade, people dress up as renowned artists. One of the most memorable is the larger-than-life Frida Puppet, created by local artist Krista Jarvis.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">02</div>
+        <div class="icon-name">Monarch Butterfly</div>
+        <div class="icon-desc">Aside from being a beautiful creature that graces our skies, the monarch butterfly is a nod to the local ski area of the same name. A short drive up Monarch Pass, you find yourself at the local ski area — deeply involved in the local art community with an annual art show on retired snowboards.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">03</div>
+        <div class="icon-name">Juggling Unicyclist</div>
+        <div class="icon-desc">This character represents the Salida Circus, founded by Jennifer Dempsey. The Circus has amazing programs for children of all ages and brings joy to the whole community.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">04</div>
+        <div class="icon-name">Bicycle Riding Giraffe</div>
+        <div class="icon-desc">If you've spent any time on the streets of Salida, you have surely seen the beloved Salida Giraffe ride by. He first showed up in the Parade for the Species in 2014, loved Salida so much that he never left. No one is exactly sure who the Giraffe is, but he's said to hang his hat at the Box of Bubbles.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">05</div>
+        <div class="icon-name">Derby Girl</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">06</div>
+        <div class="icon-name">Ordinary Bike</div>
+        <div class="icon-desc">Harks back to a time in Seth's childhood when local artist Jack Chivis, aka Cactus Jack, would ride at the front of most of the many Salida parades.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">07</div>
+        <div class="icon-name">Salvador Dalí</div>
+        <div class="icon-desc">One of the other famous artists to enjoy Salida artwork is riding the Ordinary Bike.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">08</div>
+        <div class="icon-name">S Mountain</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">09</div>
+        <div class="icon-name">Ballcano</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">10</div>
+        <div class="icon-name">Loyal Duke Memorial</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">11</div>
+        <div class="icon-name">Mountain Bikers</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">12</div>
+        <div class="icon-name">Lookout Pavilion on S Mountain</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">13</div>
+        <div class="icon-name">Fireworks</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">14</div>
+        <div class="icon-name">UFO</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">15</div>
+        <div class="icon-name">Town Deer</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">16</div>
+        <div class="icon-name">Fabric Rock</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">17</div>
+        <div class="icon-name">Shelby's Robot</div>
+        <div class="icon-desc">If you haven't seen any of the robots that live in our little town, you haven't been looking. The creation of local artist Shelby Cox — the stilt-walker is in the mural because she was already downtown.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">18</div>
+        <div class="icon-name">Caboose</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">19</div>
+        <div class="icon-name">F Street Bridge</div>
+        <div class="icon-desc">When Seth was young, long before the river was the playground it is today, under the bridge was prime garter snake territory.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">20</div>
+        <div class="icon-name">The Mud People</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">21</div>
+        <div class="icon-name">Curtis's Tree</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">22</div>
+        <div class="icon-name">Mount Princeton</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">23</div>
+        <div class="icon-name">Smeltertown Smokestack</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">24</div>
+        <div class="icon-name">The Arkansas Wave</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">25</div>
+        <div class="icon-name">River Surfer</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">26</div>
+        <div class="icon-name">Racing Gates for FibArk</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">27</div>
+        <div class="icon-name">Hooligan Race Pirate Ship</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">28</div>
+        <div class="icon-name">The Kayak Wall</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">29</div>
+        <div class="icon-name">Ghost</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">30</div>
+        <div class="icon-name">Art Sign in the Window</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">31</div>
+        <div class="icon-name">Van Gogh</div>
+        <div class="icon-desc">Painting the fireworks over S Mountain in the style of Starry Night.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">32</div>
+        <div class="icon-name">Olly the Cat</div>
+        <div class="icon-desc">There are many cats and cat lovers all around Salida. This specific cat happens to be Sarge's best friend.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">33</div>
+        <div class="icon-name">Loyal Duke</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">34</div>
+        <div class="icon-name">Acoustic Guitar Player</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">35</div>
+        <div class="icon-name">The Bungle Jungle Dragon</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">36</div>
+        <div class="icon-name">Sargent Pepper Kal Doggo of York</div>
+        <div class="icon-desc">Artist Seth Brandon's sidekick, known around town as Sarge. He was the primary supervisor of the Iconic Salida Mural project.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">37</div>
+        <div class="icon-name">Historic "Salida Brick" Building</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">38</div>
+        <div class="icon-name">Book of Poetry with a Sparrow</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">39</div>
+        <div class="icon-name">Rubber Duck</div>
+        <div class="icon-desc">From the Durby.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">40</div>
+        <div class="icon-name">"Follow the Hearts to Salida"</div>
+        <div class="icon-desc">The yellow heart.</div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">41</div>
+        <div class="icon-name">Dark Sky Lamp Posts</div>
+        <div class="icon-desc"></div>
+      </div>
+
+      <div class="icon-item">
+        <div class="icon-number">42</div>
+        <div class="icon-name">Big Foot</div>
+        <div class="icon-desc"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <div class="shop-section">
+    <div class="section-label" style="text-align:center;">Take a Piece Home</div>
+    <div class="section-rule"></div>
+    <div class="shop-grid">
+
+      <div class="product-card">
+        <div class="product-image frame">
+          <div class="product-placeholder">
+            <span>Postcard Image</span>
+          </div>
+        </div>
+        <div class="product-name">Iconic Salida Postcard</div>
+        <div class="product-desc">A full-color postcard of the mural.<br>Send a piece of Salida to someone you love.</div>
+        <a class="product-btn" href="#">Coming Soon</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image frame">
+          <div class="product-placeholder">
+            <span>Puzzle Image</span>
+          </div>
+        </div>
+        <div class="product-name">Iconic Salida Puzzle</div>
+        <div class="product-desc">Pre-order the Iconic Salida jigsaw puzzle.<br>Find all 42 icons — one piece at a time.</div>
+        <a class="product-btn" href="#">Pre-Order</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CREDITS -->
   <div class="credits">
-    <p>Mural by Seth Brandon<br>Salida, Colorado</p>
+    <p>
+      Mural by Seth Brandon<br>
+      136 E 2nd St &nbsp;·&nbsp; Salida, Colorado 81201<br>
+      West side of the Tacos El Tapatio building<br>
+      Painted August 2024
+    </p>
   </div>
 
-  <footer><p>Storytelling Through Art</p></footer>
+  <footer><p>© Blucherville Press &nbsp;·&nbsp; Storytelling Through Art</p></footer>
+
 </body>
 </html>
