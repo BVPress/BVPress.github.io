@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iconic Salida — Blucherville Press</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      padding: 28px 40px;
+      border-bottom: 0.5px solid #222;
+    }
+    nav a {
+      font-size: 10px;
+      color: #555;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    nav a:hover { color: #fff; }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 40px 60px;
+      border-bottom: 0.5px solid #222;
+      text-align: center;
+    }
+    .hero-logo {
+      max-width: 320px;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 48px;
+    }
+    .rule { width: 40px; height: 0.5px; background: #333; margin: 0 auto 32px; }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .hero-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #888;
+      font-style: italic;
+    }
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 40px;
+    }
+    .content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #999;
+      font-style: italic;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: #111;
+      border-top: 0.5px solid #222;
+      border-bottom: 0.5px solid #222;
+    }
+    .photo-slot {
+      aspect-ratio: 4 / 3;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-slot.empty {
+      border: 0.5px dashed #2a2a2a;
+    }
+    .photo-slot.empty span {
+      font-size: 9px;
+      color: #333;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .credits {
+      padding: 48px 40px;
+      text-align: center;
+      border-bottom: 0.5px solid #1a1a1a;
+    }
+    .credits p {
+      font-size: 10px;
+      color: #444;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 2;
+      font-style: normal;
+    }
+    footer {
+      margin-top: auto;
+      border-top: 0.5px solid #181818;
+      padding: 18px 40px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 9px;
+      color: #2a2a2a;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 60px 24px 48px; }
+      .content { padding: 48px 24px; }
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav><a href="../index.html">← Blucherville Press</a></nav>
+
+  <div class="hero">
+    <img class="hero-logo" src="../images/IconicSalidaSign.png" alt="Iconic Salida" />
+    <div class="rule"></div>
+    <div class="hero-title">Iconic Salida</div>
+    <div class="hero-tag">A mural by Seth Brandon</div>
+  </div>
+
+  <div class="content">
+    <p>Coming soon — photos and the story behind the mural.</p>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-slot empty"><span>Photo</span></div>
+    <div class="photo-slot empty"><span>Photo</span></div>
+    <div class="photo-slot empty"><span>Photo</span></div>
+    <div class="photo-slot empty"><span>Photo</span></div>
+  </div>
+
+  <div class="credits">
+    <p>Mural by Seth Brandon<br>Salida, Colorado</p>
+  </div>
+
+  <footer><p>Storytelling Through Art</p></footer>
+</body>
+</html>
